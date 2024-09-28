@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { castArray, uniq } from '@dilatoapp/helpers/src/array'
-import { assertSafeKey } from '@dilatoapp/helpers/src/check'
+import { castArray, uniq } from '@/helpers/array'
+import { assertSafeKey } from '@/helpers/check'
 
 export function cloneDeep<T>(value: T): T {
   return JSON.parse(JSON.stringify(value))

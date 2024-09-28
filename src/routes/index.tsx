@@ -17,14 +17,12 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const convIdRef = useRef(Math.random().toString())
-  const modelRef = useRef<Model | null>(null)
-  const [hasModel, setHasModel] = useState(false)
+  const [model, setModel] = useState<Model | null>(null)
   const { isPending: isGenerating, mutate } = useMutation({
     mutationFn: chat,
     onSuccess(data) {
       setMessages((messages) => [...messages, { role: 'assistant', content: data.text }])
-      modelRef.current = merge(modelRef.current, data.model)
-      setHasModel(true)
+      setModel((model) => merge(model, data.model))
     },
   })
 
@@ -50,7 +48,7 @@ function Index() {
 
     mutate({
       conv_id: convIdRef.current,
-      declaration: modelRef.current ?? {},
+      declaration: model ?? {},
       messages: [{ role: 'user', content: input }],
     })
     setInput('')
@@ -58,7 +56,7 @@ function Index() {
   }
 
   return (
-    <main className="flex h-screen w-full max-w-4xl mx-auto py-6">
+    <main className="flex h-screen w-full max-w-7xl mx-auto py-6 gap-6">
       <div className="flex flex-col items-center flex-1">
         <ChatMessageList ref={messagesRef}>
           {messages.length === 0 && <InitialMessage />}
@@ -86,7 +84,7 @@ function Index() {
         </div>
       </div>
 
-      <Declaration show={hasModel} />
+      <Declaration show={model !== null} model={model} setModel={setModel} />
     </main>
   )
 }
