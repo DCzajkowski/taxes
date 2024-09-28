@@ -1,4 +1,5 @@
 import { InitialMessage } from '@/components/InitialMessage'
+import { Input } from '@/components/Input'
 import { Button } from '@/components/ui/button'
 import { ChatBubble, ChatBubbleAvatar, ChatBubbleMessage } from '@/components/ui/chat/chat-bubble'
 import { ChatInput } from '@/components/ui/chat/chat-input'
@@ -19,9 +20,10 @@ function Avatar({ role }: { role: Role }) {
   return (
     <ChatBubbleAvatar
       src={match(role, {
-        user: '/user.png',
+        user: '/user.svg',
         assistant: '/ai.svg',
       })}
+      className="border"
       fallback={role == 'user' ? '🙋🏼‍♂️' : '🗄️'}
     />
   )
@@ -41,7 +43,6 @@ function Index() {
   const [isGenerating, setIsGenerating] = useState(false)
 
   const messagesRef = useRef<HTMLDivElement>(null)
-  const formRef = useRef<HTMLFormElement>(null)
 
   useEffect(() => {
     if (messagesRef.current) {
@@ -100,35 +101,13 @@ function Index() {
       </ChatMessageList>
 
       <div className="w-full px-4">
-        <form
-          ref={formRef}
+        <Input
           onSubmit={onSubmit}
-          className="relative rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
-        >
-          <ChatInput
-            value={input}
-            onKeyDown={onKeyDown}
-            onChange={(e) => setInput(e.target.value)}
-            placeholder="Type your message here..."
-            className="min-h-12 resize-none rounded-lg bg-background border-0 p-3 shadow-none focus-visible:ring-0"
-          />
-          <div className="flex items-center p-3 pt-0">
-            <Button variant="ghost" size="icon">
-              <Paperclip className="size-4" />
-              <span className="sr-only">Attach file</span>
-            </Button>
-
-            <Button variant="ghost" size="icon">
-              <Mic className="size-4" />
-              <span className="sr-only">Use Microphone</span>
-            </Button>
-
-            <Button disabled={disabled} type="submit" size="sm" className="ml-auto gap-1.5">
-              Send Message
-              <CornerDownLeft className="size-3.5" />
-            </Button>
-          </div>
-        </form>
+          input={input}
+          setInput={setInput}
+          disabled={disabled}
+          setIsGenerating={setIsGenerating}
+        />
       </div>
     </main>
   )
