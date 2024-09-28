@@ -1,12 +1,9 @@
 import { InitialMessage } from '@/components/InitialMessage'
-import { Input } from '@/components/Input'
-import { Button } from '@/components/ui/button'
+import { OurChatInput } from '@/components/OurChatInput'
 import { ChatBubble, ChatBubbleAvatar, ChatBubbleMessage } from '@/components/ui/chat/chat-bubble'
-import { ChatInput } from '@/components/ui/chat/chat-input'
 import { ChatMessageList } from '@/components/ui/chat/chat-message-list'
 import { match } from '@/helpers/check'
 import { createFileRoute } from '@tanstack/react-router'
-import { CornerDownLeft, Mic, Paperclip } from 'lucide-react'
 import { FormEvent, KeyboardEvent, useEffect, useRef, useState } from 'react'
 
 export const Route = createFileRoute('/')({
@@ -50,19 +47,6 @@ function Index() {
     }
   }, [messages])
 
-  const onKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault()
-
-      if (disabled) {
-        return
-      }
-
-      setIsGenerating(true)
-      onSubmit(e)
-    }
-  }
-
   const disabled = input === '' || isGenerating
 
   const onSubmit = async (e: FormEvent<HTMLFormElement> | KeyboardEvent<HTMLTextAreaElement>) => {
@@ -101,7 +85,7 @@ function Index() {
       </ChatMessageList>
 
       <div className="w-full px-4">
-        <Input
+        <OurChatInput
           onSubmit={onSubmit}
           input={input}
           setInput={setInput}

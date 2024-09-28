@@ -1,10 +1,10 @@
 import { RecordButton } from '@/components/RecordButton'
 import { Button } from '@/components/ui/button'
 import { ChatInput } from '@/components/ui/chat/chat-input'
-import { CornerDownLeft, Mic } from 'lucide-react'
+import { CornerDownLeft } from 'lucide-react'
 import { Dispatch, FormEvent, KeyboardEvent, SetStateAction } from 'react'
 
-export function Input({
+export function OurChatInput({
   onSubmit,
   input,
   setInput,

@@ -1,5 +1,4 @@
 import { Button } from '@/components/ui/button'
-import { identity } from '@/helpers/function'
 import { cn } from '@/lib/utils'
 import { Mic } from 'lucide-react'
 import { useRef, useState } from 'react'

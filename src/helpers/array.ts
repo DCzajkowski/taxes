@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-import { assertSafeKey } from '@dilatoapp/helpers/src/check'
+import { assertSafeKey } from '@/helpers/check'
 
 export function castArray<T>(value: T): T extends any[] ? T : [T] {
   return (Array.isArray(value) ? value : [value]) as any
@@ -228,7 +228,7 @@ export function replace<TElement>(
   }
 
   // We know `index` is inside of the array bounds, as we have just found it.
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+
   const element = array[index]!
 
   return replaceAt(array, index, setter(element, index))
