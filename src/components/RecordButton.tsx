@@ -1,9 +1,22 @@
+import { transcribe } from '@/api'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
+import { useMutation } from '@tanstack/react-query'
 import { Mic } from 'lucide-react'
 import { useRef, useState } from 'react'
 
-export function RecordButton() {
+type Props = {
+  onSuccess: (text: string) => void
+}
+
+export function RecordButton({ onSuccess }: Props) {
+  const { mutate, isPending } = useMutation({
+    mutationFn: transcribe,
+    onSuccess(data) {
+      onSuccess(data.text)
+    },
+  })
+
   const [isRecording, setIsRecording] = useState(false)
 
   const mediaRecorderRef = useRef<MediaRecorder | null>(null)
@@ -43,8 +56,9 @@ export function RecordButton() {
 
     mediaRecorder.onstop = () => {
       const blob = new Blob(chunks.current, { type: mediaRecorder.mimeType })
+      const file = new File([blob], 'recording.webm', { type: mediaRecorder.mimeType })
 
-      console.log(blob)
+      mutate(file)
 
       chunks.current = []
     }
@@ -72,12 +86,17 @@ export function RecordButton() {
       onClick={onClick}
       disabled={!supportsRecording}
     >
-      <Mic
-        className={cn({
-          'animate-pulse': isRecording,
-          'size-4': true,
-        })}
-      />
+      {isPending ? (
+        <div className="size-4 border-2 border-gray-500 border-r-transparent rounded-full animate-spin" />
+      ) : (
+        <Mic
+          className={cn({
+            'animate-pulse': isRecording,
+            'size-4': true,
+          })}
+        />
+      )}
+
       <span className="sr-only">Użyj mikrofonu</span>
     </Button>
   )
