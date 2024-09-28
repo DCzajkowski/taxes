@@ -5,6 +5,7 @@ import { InitialMessage } from '@/components/InitialMessage'
 import { OurChatInput } from '@/components/OurChatInput'
 import { ChatBubble, ChatBubbleMessage } from '@/components/ui/chat/chat-bubble'
 import { ChatMessageList } from '@/components/ui/chat/chat-message-list'
+import { useStoredState } from '@/hooks/useStoredState'
 import { Message, Model } from '@/types'
 import { useMutation } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
@@ -17,7 +18,7 @@ export const Route = createFileRoute('/')({
 
 function Index() {
   const convIdRef = useRef(Math.random().toString())
-  const [model, setModel] = useState<Model | null>(null)
+  const [model, setModel] = useStoredState<Model | null>(null, 'taxes-model')
   const { isPending: isGenerating, mutate } = useMutation({
     mutationFn: chat,
     onSuccess(data) {
@@ -27,7 +28,7 @@ function Index() {
   })
 
   const [input, setInput] = useState('')
-  const [messages, setMessages] = useState<Message[]>([])
+  const [messages, setMessages] = useStoredState<Message[]>([], 'taxes-messages')
 
   const messagesRef = useRef<HTMLDivElement>(null)
 
