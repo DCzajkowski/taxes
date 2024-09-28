@@ -102,15 +102,20 @@ export async function upload(file: File): Promise<SuccessUploadResponse> {
   }
 
   const formData = new FormData()
-  formData.append('file', file)
+  formData.append('file', file, file.name)
 
   const response = await fetch(endpoint, {
     method: 'POST',
     body: formData,
+    headers: {
+      Accept: 'application/json',
+    },
+    credentials: 'include', // This will include cookies if needed
   })
   if (!response.ok) {
-    console.error(response)
-
+    console.error('Response:', response)
+    const text = await response.text()
+    console.error('Response text:', text)
     throw new Error(`Request failed with status ${response.status}`)
   }
 
