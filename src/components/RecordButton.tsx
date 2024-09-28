@@ -85,6 +85,7 @@ export function RecordButton({ onSuccess }: Props) {
       size="icon"
       onClick={onClick}
       disabled={!supportsRecording}
+      type="button"
     >
       {isPending ? (
         <div className="size-4 border-2 border-gray-500 border-r-transparent rounded-full animate-spin" />

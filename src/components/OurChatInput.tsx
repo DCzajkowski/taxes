@@ -1,3 +1,4 @@
+import { FileButton } from '@/components/FileButton'
 import { RecordButton } from '@/components/RecordButton'
 import { Button } from '@/components/ui/button'
 import { ChatInput } from '@/components/ui/chat/chat-input'
@@ -44,6 +45,13 @@ export function OurChatInput({
       />
       <div className="flex items-center p-3 pt-0">
         <RecordButton
+          onSuccess={(text) => {
+            setInput((prev) => prev + text.trim())
+            inputRef.current?.focus()
+          }}
+        />
+
+        <FileButton
           onSuccess={(text) => {
             setInput((prev) => prev + text.trim())
             inputRef.current?.focus()
