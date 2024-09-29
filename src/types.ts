@@ -98,7 +98,7 @@ type PartialSectionB = {
   osoba_fizyczna?: PartialOsobaFizyczna
   osoba_niefizyczna?: PartialOsobaNiefizyczna
   adres_zamieszkania_siedziby?: PartialAdres
-  podmiot_skladajacy?: (typeof PodmiotSkladajacy)[keyof typeof PodmiotSkladajacy]
+  podmiot?: (typeof PodmiotSkladajacy)[keyof typeof PodmiotSkladajacy]
   is_complete: boolean
 }
 
