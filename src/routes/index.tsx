@@ -90,7 +90,7 @@ function Index() {
   return (
     <main className="flex h-screen w-full max-w-7xl mx-auto py-6 gap-6">
 
-      <Dialog open={xml !== undefined}>
+      <Dialog open={xml !== null}>
         <DialogContent>
           <h1 className='text-3xl font-bold  mx-auto mb-6 whitespace-nowrap'>Twoja deklaracja jest gotowa!</h1>
           <button className='rounded-md px-3 py-2 bg-gov-blue text-white font-bold w-fit mx-auto' onClick={downloadXml}>
