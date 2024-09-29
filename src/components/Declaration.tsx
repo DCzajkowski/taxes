@@ -16,7 +16,7 @@ import {
   RodzajCzynnosci,
   TypSpolki,
 } from '@/types'
-import { motion } from 'framer-motion'
+import { m, motion } from 'framer-motion'
 import { set } from 'lodash'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
@@ -93,11 +93,35 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
 
   const [rodzajCzynnosci, setRodzajCzynnosci] = useState<string>('')
 
+
+  const [value, setValue] = useState<keyof Model | null>('sekcja_a')
+
+  useEffect(() => {
+    setValue(old => {
+      const isCurrentIncomplete = old !== null && (model[old] === null || (model[old]?.is_complete ?? false) === false)
+      if(isCurrentIncomplete) {
+        return old
+      }
+
+      const incomplete = Object.keys(model).find((key) => {
+        return model[key as keyof Model] === null || (model[key as keyof Model]?.is_complete ?? false) === false
+      })
+
+      if(incomplete === undefined) {
+        return null
+      }
+
+      return incomplete as keyof Model
+    })
+  }, [model])
+
   return (
     <div className="p-6 h-full overflow-y-auto">
       <h2 className="text-2xl font-semibold text-gov-blue">Deklaracja PCC-3</h2>
 
-      <Accordion type="single" defaultValue="sekcja_a" collapsible className="mt-4">
+      <Accordion type="single" value={value ?? undefined} onValueChange={(value) => {
+        setValue(value ==='' ? null : value as keyof Model)
+      }} collapsible className="mt-4">
         <AccordionItem value="sekcja_a">
           <AccordionTrigger className="text-left font-bold">A. Okres, miejsce i cel składania deklaracji</AccordionTrigger>
           <AccordionContent className="pb-6">

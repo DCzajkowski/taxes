@@ -63,6 +63,7 @@ type PartialSectionA = {
   cel_zlozenia?: (typeof CelZlozenia)[keyof typeof CelZlozenia]
   data_dokonania_czynnosci?: string
   kod_urzedu?: string
+  is_complete: boolean
 }
 
 type PartialAdres = {
@@ -98,6 +99,7 @@ type PartialSectionB = {
   osoba_niefizyczna?: PartialOsobaNiefizyczna
   adres_zamieszkania_siedziby?: PartialAdres
   podmiot_skladajacy?: (typeof PodmiotSkladajacy)[keyof typeof PodmiotSkladajacy]
+  is_complete: boolean
 }
 
 type PartialSectionC = {
@@ -105,6 +107,7 @@ type PartialSectionC = {
   miejsce_polozenia?: (typeof MiejscePolozenia)[keyof typeof MiejscePolozenia]
   miejsce_dokonania_czynnosci?: (typeof MiejscePolozenia)[keyof typeof MiejscePolozenia]
   tresc_czynnosci?: string
+  is_complete: boolean
 }
 
 type PartialSectionD = {
@@ -132,6 +135,7 @@ type PartialSectionD = {
   stawka_podatku_inna?: number
   kwota_podatku_inna?: number
   kwota_podatku_naleznego?: number
+  is_complete: boolean
 }
 
 type PartialSectionE = {
@@ -141,10 +145,12 @@ type PartialSectionE = {
   koszty?: number
   podstawa_obliczenia_podatku?: number
   kwota_podatku?: number
+  is_complete: boolean
 }
 
 type PartialSectionF = {
   kwota_podatku_do_zaplaty?: number
+  is_complete: boolean
 }
 
 type PartialSectionG = {
@@ -156,10 +162,12 @@ type PartialSectionG = {
   nr_lokalu?: string
   miejscowosc?: string
   kod_pocztowy?: string
+  is_complete: boolean
 }
 
 type PartialSectionH = {
   liczba_zalacznikow?: number
+  is_complete: boolean
 }
 
 type PartialDeklaracja = {
@@ -171,7 +179,7 @@ type PartialDeklaracja = {
   sekcja_f?: PartialSectionF
   sekcja_g?: PartialSectionG
   sekcja_h?: PartialSectionH
-  pouczenia?: number
+  // pouczenia?: number
 }
 
 export type Model = PartialDeklaracja
