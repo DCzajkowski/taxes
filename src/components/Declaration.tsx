@@ -91,7 +91,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
     })
   }, [model.sekcja_b?.osoba_fizyczna?.nip, model.sekcja_b?.osoba_fizyczna?.pesel ])
 
-  const [rodzajCzynnosci, setRodzajCzynnosci] = useState<string>('')
+  const [rodzajCzynnosci, setRodzajCzynnosci] = useState<string>(RodzajCzynnosci.UMOWA_SPRZEDAZY)
 
 
   const [value, setValue] = useState<keyof Model | null>('sekcja_a')
@@ -132,7 +132,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
             />
             <DeclarationInput
               label="Urząd, do którego jest adresowana deklaracja"
-              value={model.sekcja_a?.kod_urzedu ?? ''}
+              value={model.sekcja_a?.nazwa_urzedu ?? ''}
               setValue={setter('sekcja_a.kod_urzedu')}
             />
             <DeclarationInputWrapper label="Cel złożenia deklaracji">
@@ -430,22 +430,22 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
                 <>
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 1%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł"
-                    value={String(model.sekcja_d?.podstawa_opodatkowania_1 ?? '')}
+                    value={''}
                     setValue={(value) => setter('sekcja_d.podstawa_opodatkowania_1')(Number(value))}
                   />
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 1%) - obliczony należny podatek zł"
-                    value={String(model.sekcja_d?.kwota_podatku_1 ?? '')}
+                    value={''}
                     setValue={(value) => setter('sekcja_d.kwota_podatku_1')(Number(value))}
                   />
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 2%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł"
-                    value={String(model.sekcja_d?.podstawa_opodatkowania_2 ?? '')}
+                    value={String(model.sekcja_d?.podstawa_opodatkowania ?? '')}
                     setValue={(value) => setter('sekcja_d.podstawa_opodatkowania_2')(Number(value))}
                   />
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 2%) - obliczony należny podatek zł"
-                    value={String(model.sekcja_d?.kwota_podatku_2 ?? '')}
+                    value={String(model.sekcja_d?.kwota_podatku ?? '')}
                     setValue={(value) => setter('sekcja_d.kwota_podatku_2')(Number(value))}
                   />
                 </>

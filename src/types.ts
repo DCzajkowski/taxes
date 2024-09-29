@@ -6,55 +6,55 @@ export type Message = { role: Role; content: string }
  */
 
 export const CelZlozenia = {
-  ZLOZENIE: 1,
-  KOREKTA: 2,
+  ZLOZENIE: 'ZLOZENIE',
+  KOREKTA: 'KOREKTA',
 }
 
 export const PodmiotSkladajacy = {
-  PODMIOT_ZOBOWIAZANY: 1,
-  STRONA_UMOWY_ZAMIANY: 2,
-  WSPOLNIK_SPOLKI_CYWILNEJ: 3,
-  POZYCZKOBIORCA: 4,
-  INNY_PODMIOT: 5,
+  PODMIOT_ZOBOWIAZANY:"PODMIOT_ZOBOWIAZANY",
+  STRONA_UMOWY_ZAMIANY:"STRONA_UMOWY_ZAMIANY",
+  WSPOLNIK_SPOLKI_CYWILNEJ:"WSPOLNIK_SPOLKI_CYWILNEJ",
+  POZYCZKOBIORCA:"POZYCZKOBIORCA",
+  INNY_PODMIOT:"INNY_PODMIOT",
 }
 
 export const PrzedmiotOpodatkowania = {
-  UMOWA: 1,
-  ZMIANA_UMOWY: 2,
-  ORZECZENIE_SADU_LUB_UGODA: 3,
-  INNE: 4,
+  UMOWA: "UMOWA",
+  ZMIANA_UMOWY: "ZMIANA_UMOWY",
+  ORZECZENIE_SADU_LUB_UGODA: "ORZECZENIE_SADU_LUB_UGODA",
+  INNE: "INNE",
 }
 
 export const MiejscePolozenia = {
-  TERYTORIUM_RP: 1,
-  POZA_TERYTORIUM_RP: 2,
+  TERYTORIUM_RP: "TERYTORIUM_RP",
+  POZA_TERYTORIUM_RP: "POZA_TERYTORIUM_RP",
 }
 
 export const TypSpolki = {
-  OSOBOWA: 1,
-  KAPITALOWA: 2,
+  OSOBOWA: "OSOBOWA",
+  KAPITALOWA: "KAPITALOWA",
 }
 
 export const PodstawaOpodatkowania = {
-  ZAWARCIE_UMOWY_SPOLKI: 1,
-  ZWIEKSZENIE_MAJATKU_SPOLKI: 2,
-  DOPLATA: 3,
-  POZYCZKA_UDZIELONA_SPOLCE: 4,
-  ODDANIE_RZECZY_DO_UZYWANIA: 5,
-  PRZEKSZTALCENIE_SPOLEK: 6,
-  LACZENIE_SPOLEK: 7,
-  PRZENIESIENIE_SIEDZIBY: 8,
+  ZAWARCIE_UMOWY_SPOLKI: "ZAWARCIE_UMOWY_SPOLKI",
+  ZWIEKSZENIE_MAJATKU_SPOLKI: "ZWIEKSZENIE_MAJATKU_SPOLKI",
+  DOPLATA: "DOPLATA",
+  POZYCZKA_UDZIELONA_SPOLCE: "POZYCZKA_UDZIELONA_SPOLCE",
+  ODDANIE_RZECZY_DO_UZYWANIA: "ODDANIE_RZECZY_DO_UZYWANIA",
+  PRZEKSZTALCENIE_SPOLEK: "PRZEKSZTALCENIE_SPOLEK",
+  LACZENIE_SPOLEK: "LACZENIE_SPOLEK",
+  PRZENIESIENIE_SIEDZIBY: "PRZENIESIENIE_SIEDZIBY",
 }
 
 export const RodzajCzynnosci = {
-  UMOWA_SPRZEDAZY: 1,
-  UMOWA_ZAMIANY: 2,
-  UMOWA_POZYCZKI: 3,
-  UMOWA_DAROWIZNY: 4,
-  USTANOWIENIE_ODPŁATNEGO_UZYTKOWANIA: 5,
-  WIERZYTELNOSC_ISTNIEJACA: 6,
-  WIERZYTELNOSC_O_WYSOKOSCI_NIEUSTALONEJ: 7,
-  INNA_CZYNNOSC: 8,
+  UMOWA_SPRZEDAZY: "UMOWA_SPRZEDAZY",
+  UMOWA_ZAMIANY: "UMOWA_ZAMIANY",
+  UMOWA_POZYCZKI: "UMOWA_POZYCZKI",
+  UMOWA_DAROWIZNY: "UMOWA_DAROWIZNY",
+  USTANOWIENIE_ODPŁATNEGO_UZYTKOWANIA: "USTANOWIENIE_ODPŁATNEGO_UZYTKOWANIA",
+  WIERZYTELNOSC_ISTNIEJACA: "WIERZYTELNOSC_ISTNIEJACA",
+  WIERZYTELNOSC_O_WYSOKOSCI_NIEUSTALONEJ: "WIERZYTELNOSC_O_WYSOKOSCI_NIEUSTALONEJ",
+  INNA_CZYNNOSC: "INNA_CZYNNOSC",
 }
 
 type PartialSectionA = {
@@ -62,7 +62,7 @@ type PartialSectionA = {
   wariant_formularza?: 6
   cel_zlozenia?: (typeof CelZlozenia)[keyof typeof CelZlozenia]
   data_dokonania_czynnosci?: string
-  kod_urzedu?: string
+  nazwa_urzedu?: string
   is_complete: boolean
 }
 
@@ -111,29 +111,8 @@ type PartialSectionC = {
 }
 
 type PartialSectionD = {
-  podstawa_opodatkowania_1?: number
-  kwota_podatku_1?: number
-  podstawa_opodatkowania_2?: number
-  kwota_podatku_2?: number
-  podstawa_opodatkowania_zamiana?: number
-  stawka_podatku_zamiana?: number
-  kwota_podatku_zamiana?: number
-  podstawa_opodatkowania_pozyczka?: number
-  stawka_podatku_pozyczka?: number
-  kwota_podatku_pozyczka?: number
-  podstawa_opodatkowania_darowizna?: number
-  stawka_podatku_darowizna?: number
-  kwota_podatku_darowizna?: number
-  podstawa_opodatkowania_uzytkowanie?: number
-  stawka_podatku_uzytkowanie?: number
-  kwota_podatku_uzytkowanie?: number
-  podstawa_opodatkowania_hipoteka?: number
-  kwota_podatku_hipoteka?: number
-  kwota_podatku_hipoteka_nieustalona?: number
-  rodzaj_czynnosci_innej?: string
-  podstawa_opodatkowania_inna?: number
-  stawka_podatku_inna?: number
-  kwota_podatku_inna?: number
+  podstawa_opodatkowania: number
+  kwota_podatku: number
   kwota_podatku_naleznego?: number
   is_complete: boolean
 }
