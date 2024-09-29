@@ -441,12 +441,12 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 2%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł"
                     value={String(model.sekcja_d?.podstawa_opodatkowania ?? '')}
-                    setValue={(value) => setter('sekcja_d.podstawa_opodatkowania_2')(value)}
+                    setValue={(value) => setter('sekcja_d.podstawa_opodatkowania')(value)}
                   />
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 2%) - obliczony należny podatek zł"
                     value={String(model.sekcja_d?.kwota_podatku ?? '')}
-                    setValue={(value) => setter('sekcja_d.kwota_podatku_2')(value)}
+                    setValue={(value) => setter('sekcja_d.kwota_podatku')(value)}
                   />
                 </>
               ),
