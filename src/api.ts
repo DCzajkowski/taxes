@@ -15,7 +15,6 @@ const chatResponseSchema = z.object({
   declaration: z.record(z.unknown()),
 })
 
-type ChatResponse = z.infer<typeof chatResponseSchema>
 
 type SuccessChatResponse = {
   text: string
@@ -53,8 +52,6 @@ export async function chat(request: ChatRequest): Promise<SuccessChatResponse> {
 const transcribeResponseSchema = z.object({
   transcription: z.string(),
 })
-
-type TranscribeResponse = z.infer<typeof transcribeResponseSchema>
 
 type SuccessTranscribeResponse = {
   text: string

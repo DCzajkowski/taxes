@@ -118,6 +118,8 @@ export function mapValues<TObject extends Record<string, any>, TReturn>(
   for (const [key, value] of Object.entries(object)) {
     assertSafeKey(key)
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     result[key] = mapper(value, key)
   }
 
@@ -135,6 +137,8 @@ export function mergeWith<TObjectA extends Record<any, any>, TObjectB extends Re
   for (const key of keys) {
     assertSafeKey(key)
 
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+    // @ts-ignore
     result[key] = mapper(objectA[key], objectB[key])
   }
 

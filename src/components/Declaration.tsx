@@ -1,3 +1,12 @@
+import { DeclarationInput } from '@/components/DeclarationInput'
+import { DeclarationInputWrapper } from '@/components/DeclarationInputWrapper'
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
+import { Input } from '@/components/ui/input'
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
+import { match } from '@/helpers/check'
+import { noop } from '@/helpers/function'
+import { cloneDeep } from '@/helpers/object'
 import {
   CelZlozenia,
   MiejscePolozenia,
@@ -8,18 +17,8 @@ import {
   TypSpolki,
 } from '@/types'
 import { motion } from 'framer-motion'
+import { set } from 'lodash'
 import { Dispatch, SetStateAction, useState } from 'react'
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
-import { Input } from '@/components/ui/input'
-import { Form } from '@/components/ui/form'
-import { DeclarationInput } from '@/components/DeclarationInput'
-import { get, set } from 'lodash'
-import { DeclarationInputWrapper } from '@/components/DeclarationInputWrapper'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-import { cloneDeep } from '@/helpers/object'
-import { match } from '@/helpers/check'
-import { Textarea } from '@/components/ui/textarea'
-import { noop } from '@/helpers/function'
 
 type Props = {
   show: boolean
