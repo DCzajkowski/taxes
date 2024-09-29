@@ -13,12 +13,14 @@ type ChatRequest = {
 const chatResponseSchema = z.object({
   response: z.string(),
   declaration: z.record(z.unknown()),
+  generated_xml: z.string().optional(),
 })
 
 
 type SuccessChatResponse = {
   text: string
   model: Model
+  generated_xml?: string
 }
 
 export async function chat(request: ChatRequest): Promise<SuccessChatResponse> {
@@ -46,6 +48,7 @@ export async function chat(request: ChatRequest): Promise<SuccessChatResponse> {
   return {
     text: data.response,
     model: data.declaration,
+    generated_xml: data.generated_xml,
   }
 }
 
