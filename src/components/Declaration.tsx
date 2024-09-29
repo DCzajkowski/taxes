@@ -136,13 +136,13 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
               setValue={setter('sekcja_a.kod_urzedu')}
             />
             <DeclarationInputWrapper label="Cel złożenia deklaracji">
-              <Select defaultValue={String(CelZlozenia.ZLOZENIE)} disabled>
+              <Select defaultValue={CelZlozenia.ZLOZENIE} disabled>
                 <SelectTrigger className="w-full">
                   <SelectValue placeholder="" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={String(CelZlozenia.ZLOZENIE)}>Złożenie deklaracji</SelectItem>
-                  <SelectItem value={String(CelZlozenia.KOREKTA)}>Korekta deklaracji</SelectItem>
+                  <SelectItem value={CelZlozenia.ZLOZENIE}>Złożenie deklaracji</SelectItem>
+                  <SelectItem value={CelZlozenia.KOREKTA}>Korekta deklaracji</SelectItem>
                 </SelectContent>
               </Select>
             </DeclarationInputWrapper>
@@ -153,24 +153,24 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Podmiot składający deklarację">
               <Select
-                value={String(model.sekcja_b?.podmiot ?? '')}
-                onValueChange={(value) => setter('sekcja_b.podmiot')(Number(value))}
+                value={model.sekcja_b?.podmiot ?? ''}
+                onValueChange={(value) => setter('sekcja_b.podmiot')(value)}
               >
                 <SelectTrigger className="w-full bg-white">
                   <SelectValue placeholder="" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={String(PodmiotSkladajacy.PODMIOT_ZOBOWIAZANY)}>
+                  <SelectItem value={PodmiotSkladajacy.PODMIOT_ZOBOWIAZANY}>
                     Podmiot zobowiązany solidarnie do zapłaty podatku
                   </SelectItem>
-                  <SelectItem value={String(PodmiotSkladajacy.STRONA_UMOWY_ZAMIANY)}>Strona umowy zamiany</SelectItem>
-                  <SelectItem value={String(PodmiotSkladajacy.WSPOLNIK_SPOLKI_CYWILNEJ)}>
+                  <SelectItem value={PodmiotSkladajacy.STRONA_UMOWY_ZAMIANY}>Strona umowy zamiany</SelectItem>
+                  <SelectItem value={PodmiotSkladajacy.WSPOLNIK_SPOLKI_CYWILNEJ}>
                     Wspólnik spółki cywilnej
                   </SelectItem>
-                  <SelectItem value={String(PodmiotSkladajacy.POZYCZKOBIORCA)}>
+                  <SelectItem value={PodmiotSkladajacy.POZYCZKOBIORCA}>
                     Podmiot, o którym mowa w art. 9 pkt 10 lit. b ustawy (pożyczkobiorca)
                   </SelectItem>
-                  <SelectItem value={String(PodmiotSkladajacy.INNY_PODMIOT)}>Inny podmiot</SelectItem>
+                  <SelectItem value={PodmiotSkladajacy.INNY_PODMIOT}>Inny podmiot</SelectItem>
                 </SelectContent>
               </Select>
             </DeclarationInputWrapper>
@@ -337,49 +337,49 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Przedmiot opodatkowania">
               <Select
-                value={String(model.sekcja_c?.przedmiot_opodatkowania ?? '')}
-                onValueChange={(value) => setter('sekcja_c.przedmiot_opodatkowania')(Number(value))}
+                value={model.sekcja_c?.przedmiot_opodatkowania ?? ''}
+                onValueChange={(value) => setter('sekcja_c.przedmiot_opodatkowania')(value)}
               >
                 <SelectTrigger className="w-full bg-white">
                   <SelectValue placeholder="" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={String(PrzedmiotOpodatkowania.UMOWA)}>Umowa</SelectItem>
-                  <SelectItem value={String(PrzedmiotOpodatkowania.ZMIANA_UMOWY)}>Zmiana umowy</SelectItem>
-                  <SelectItem value={String(PrzedmiotOpodatkowania.ORZECZENIE_SADU_LUB_UGODA)}>
+                  <SelectItem value={PrzedmiotOpodatkowania.UMOWA}>Umowa</SelectItem>
+                  <SelectItem value={PrzedmiotOpodatkowania.ZMIANA_UMOWY}>Zmiana umowy</SelectItem>
+                  <SelectItem value={PrzedmiotOpodatkowania.ORZECZENIE_SADU_LUB_UGODA}>
                     Orzeczenie sądu lub ugoda
                   </SelectItem>
-                  <SelectItem value={String(PrzedmiotOpodatkowania.INNE)}>Inne</SelectItem>
+                  <SelectItem value={PrzedmiotOpodatkowania.INNE}>Inne</SelectItem>
                 </SelectContent>
               </Select>
             </DeclarationInputWrapper>
 
             <DeclarationInputWrapper label="Miejsce położenia rzeczy lub miejsce wykonywania prawa majątkowego">
               <Select
-                value={String(model.sekcja_c?.miejsce_polozenia ?? '')}
-                onValueChange={(value) => setter('sekcja_c.miejsce_polozenia')(Number(value))}
+                value={model.sekcja_c?.miejsce_polozenia ?? ''}
+                onValueChange={(value) => setter('sekcja_c.miejsce_polozenia')(value)}
               >
                 <SelectTrigger className="w-full bg-white">
                   <SelectValue placeholder="" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={String(MiejscePolozenia.TERYTORIUM_RP)}>Terytorium RP</SelectItem>
-                  <SelectItem value={String(MiejscePolozenia.POZA_TERYTORIUM_RP)}>Poza terytorium RP</SelectItem>
+                  <SelectItem value={MiejscePolozenia.TERYTORIUM_RP}>Terytorium RP</SelectItem>
+                  <SelectItem value={MiejscePolozenia.POZA_TERYTORIUM_RP}>Poza terytorium RP</SelectItem>
                 </SelectContent>
               </Select>
             </DeclarationInputWrapper>
 
             <DeclarationInputWrapper label="Miejsce dokonania czynności cywilnoprawnej">
               <Select
-                value={String(model.sekcja_c?.miejsce_dokonania_czynnosci ?? '')}
-                onValueChange={(value) => setter('sekcja_c.miejsce_dokonania_czynnosci')(Number(value))}
+                value={model.sekcja_c?.miejsce_dokonania_czynnosci ?? ''}
+                onValueChange={(value) => setter('sekcja_c.miejsce_dokonania_czynnosci')(value)}
               >
                 <SelectTrigger className="w-full bg-white">
                   <SelectValue placeholder="" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={String(MiejscePolozenia.TERYTORIUM_RP)}>Terytorium RP</SelectItem>
-                  <SelectItem value={String(MiejscePolozenia.POZA_TERYTORIUM_RP)}>Poza terytorium RP</SelectItem>
+                  <SelectItem value={MiejscePolozenia.TERYTORIUM_RP}>Terytorium RP</SelectItem>
+                  <SelectItem value={MiejscePolozenia.POZA_TERYTORIUM_RP}>Poza terytorium RP</SelectItem>
                 </SelectContent>
               </Select>
             </DeclarationInputWrapper>
@@ -402,25 +402,25 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
                   <SelectValue placeholder="" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={String(RodzajCzynnosci.UMOWA_SPRZEDAZY)}>Umowa sprzedaży</SelectItem>
-                  <SelectItem value={String(RodzajCzynnosci.UMOWA_ZAMIANY)}>Umowa zamiany</SelectItem>
-                  <SelectItem value={String(RodzajCzynnosci.UMOWA_POZYCZKI)}>
+                  <SelectItem value={RodzajCzynnosci.UMOWA_SPRZEDAZY}>Umowa sprzedaży</SelectItem>
+                  <SelectItem value={RodzajCzynnosci.UMOWA_ZAMIANY}>Umowa zamiany</SelectItem>
+                  <SelectItem value={RodzajCzynnosci.UMOWA_POZYCZKI}>
                     Umowa pożyczki lub depozytu nieprawidłowego, w tym zwolniona na podstawie art. 9 pkt 10 lit.b ustawy
                   </SelectItem>
-                  <SelectItem value={String(RodzajCzynnosci.UMOWA_DAROWIZNY)}>
+                  <SelectItem value={RodzajCzynnosci.UMOWA_DAROWIZNY}>
                     Umowa darowizny w części dotyczącej przejęcia przez obdarowanego długów i ciężarów lub zobowiązań
                     darczyńcy
                   </SelectItem>
-                  <SelectItem value={String(RodzajCzynnosci.USTANOWIENIE_ODPŁATNEGO_UZYTKOWANIA)}>
+                  <SelectItem value={RodzajCzynnosci.USTANOWIENIE_ODPŁATNEGO_UZYTKOWANIA}>
                     Ustanowienie odpłatnego użytkowania, w tym nieprawidłowego
                   </SelectItem>
-                  <SelectItem value={String(RodzajCzynnosci.WIERZYTELNOSC_ISTNIEJACA)}>
+                  <SelectItem value={RodzajCzynnosci.WIERZYTELNOSC_ISTNIEJACA}>
                     Ustanowienie hipoteki na zabezpieczenie wierzytelności istniejących
                   </SelectItem>
-                  <SelectItem value={String(RodzajCzynnosci.WIERZYTELNOSC_O_WYSOKOSCI_NIEUSTALONEJ)}>
+                  <SelectItem value={RodzajCzynnosci.WIERZYTELNOSC_O_WYSOKOSCI_NIEUSTALONEJ}>
                     Ustanowienie hipoteki na zabezpieczenie wierzytelności o wysokości nieustalonej
                   </SelectItem>
-                  <SelectItem value={String(RodzajCzynnosci.INNA_CZYNNOSC)}>Inna czynność</SelectItem>
+                  <SelectItem value={RodzajCzynnosci.INNA_CZYNNOSC}>Inna czynność</SelectItem>
                 </SelectContent>
               </Select>
             </DeclarationInputWrapper>
@@ -431,22 +431,22 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 1%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł"
                     value={''}
-                    setValue={(value) => setter('sekcja_d.podstawa_opodatkowania_1')(Number(value))}
+                    setValue={(value) => setter('sekcja_d.podstawa_opodatkowania_1')(value)}
                   />
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 1%) - obliczony należny podatek zł"
                     value={''}
-                    setValue={(value) => setter('sekcja_d.kwota_podatku_1')(Number(value))}
+                    setValue={(value) => setter('sekcja_d.kwota_podatku_1')(value)}
                   />
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 2%) - podstawa opodatkowania określona zgodnie z art. 6 ustawy zł"
                     value={String(model.sekcja_d?.podstawa_opodatkowania ?? '')}
-                    setValue={(value) => setter('sekcja_d.podstawa_opodatkowania_2')(Number(value))}
+                    setValue={(value) => setter('sekcja_d.podstawa_opodatkowania_2')(value)}
                   />
                   <DeclarationInput
                     label="Umowa sprzedaży (stawka podatku 2%) - obliczony należny podatek zł"
                     value={String(model.sekcja_d?.kwota_podatku ?? '')}
-                    setValue={(value) => setter('sekcja_d.kwota_podatku_2')(Number(value))}
+                    setValue={(value) => setter('sekcja_d.kwota_podatku_2')(value)}
                   />
                 </>
               ),
@@ -460,15 +460,15 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Typ spółki">
               <Select
-                value={String(model.sekcja_e?.typ_spolki ?? '')}
-                onValueChange={(value) => setter('sekcja_e.typ_spolki')(Number(value))}
+                value={model.sekcja_e?.typ_spolki ?? ''}
+                onValueChange={(value) => setter('sekcja_e.typ_spolki')(value)}
               >
                 <SelectTrigger className="w-full bg-white">
                   <SelectValue placeholder="" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value={String(TypSpolki.OSOBOWA)}>Spółka osobowa</SelectItem>
-                  <SelectItem value={String(TypSpolki.KAPITALOWA)}>Spółka kapitałowa </SelectItem>
+                  <SelectItem value={TypSpolki.OSOBOWA}>Spółka osobowa</SelectItem>
+                  <SelectItem value={TypSpolki.KAPITALOWA}>Spółka kapitałowa </SelectItem>
                 </SelectContent>
               </Select>
             </DeclarationInputWrapper>
