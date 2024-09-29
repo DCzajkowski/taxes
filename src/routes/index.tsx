@@ -26,7 +26,7 @@ function Index() {
       setMessages((messages) => [...messages, { role: 'assistant', content: data.text }])
       setModel((model) => ({...merge(model, data.model)}))
 
-      if(data.generated_xml !== undefined) {
+      if(data.generated_xml !== null) {
         setXml(data.generated_xml)
       }
     },
