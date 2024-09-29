@@ -55,19 +55,42 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
 
   const [rodzajPodatnika, setRodzajPodatnika] = useState<'fizyczna' | 'nie-fizyczna' | ''>('')
   useEffect(() => {
-    if(model.sekcja_b?.osoba_fizyczna !== null) {
-      setRodzajPodatnika('fizyczna')
-      return 
-    }
+    setRodzajPodatnika(old => {
+      if (old !== '') {
+        return old
+      }
 
-    if(model.sekcja_b?.osoba_niefizyczna !== null) {
-      setRodzajPodatnika('nie-fizyczna')
-      return 
-    }
+      if(model.sekcja_b?.osoba_fizyczna !== null) {
+        return 'fizyczna'
+      }
+  
+      if(model.sekcja_b?.osoba_niefizyczna !== null) {
+        return 'nie-fizyczna'
+      }
 
+      return old
+    })
   }, [model.sekcja_b?.osoba_fizyczna,model.sekcja_b?.osoba_niefizyczna ])
 
   const [identyfikator, setIdentyfikator] = useState<'nip' | 'pesel' | ''>('')
+  useEffect(() => {
+    setIdentyfikator(old => {
+      if (old !== '') {
+        return old
+      }
+
+      if(model.sekcja_b?.osoba_fizyczna?.pesel !== null) {
+        return 'pesel'
+      }
+  
+      if(model.sekcja_b?.osoba_fizyczna?.nip !== null) {
+        return 'nip'
+      }
+
+      return old
+    })
+  }, [model.sekcja_b?.osoba_fizyczna?.nip, model.sekcja_b?.osoba_fizyczna?.pesel ])
+
   const [rodzajCzynnosci, setRodzajCzynnosci] = useState<string>('')
 
   return (
