@@ -55,75 +55,82 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
 
   const [rodzajPodatnika, setRodzajPodatnika] = useState<'fizyczna' | 'nie-fizyczna' | ''>('')
   useEffect(() => {
-    setRodzajPodatnika(old => {
+    setRodzajPodatnika((old) => {
       if (old !== '') {
         return old
       }
 
-      if(model.sekcja_b?.osoba_fizyczna !== null) {
+      if (model.sekcja_b?.osoba_fizyczna !== null) {
         return 'fizyczna'
       }
-  
-      if(model.sekcja_b?.osoba_niefizyczna !== null) {
+
+      if (model.sekcja_b?.osoba_niefizyczna !== null) {
         return 'nie-fizyczna'
       }
 
       return old
     })
-  }, [model.sekcja_b?.osoba_fizyczna,model.sekcja_b?.osoba_niefizyczna ])
+  }, [model.sekcja_b?.osoba_fizyczna, model.sekcja_b?.osoba_niefizyczna])
 
   const [identyfikator, setIdentyfikator] = useState<'nip' | 'pesel' | ''>('')
   useEffect(() => {
-    setIdentyfikator(old => {
+    setIdentyfikator((old) => {
       if (old !== '') {
         return old
       }
 
-      if(model.sekcja_b?.osoba_fizyczna?.pesel !== null) {
+      if (model.sekcja_b?.osoba_fizyczna?.pesel !== null) {
         return 'pesel'
       }
-  
-      if(model.sekcja_b?.osoba_fizyczna?.nip !== null) {
+
+      if (model.sekcja_b?.osoba_fizyczna?.nip !== null) {
         return 'nip'
       }
 
       return old
     })
-  }, [model.sekcja_b?.osoba_fizyczna?.nip, model.sekcja_b?.osoba_fizyczna?.pesel ])
+  }, [model.sekcja_b?.osoba_fizyczna?.nip, model.sekcja_b?.osoba_fizyczna?.pesel])
 
   const [rodzajCzynnosci, setRodzajCzynnosci] = useState<string>(RodzajCzynnosci.UMOWA_SPRZEDAZY)
 
-
   const [value, setValue] = useState<keyof Model | null>('sekcja_a')
 
-  useEffect(() => {
-    setValue(old => {
-      const isCurrentIncomplete = old !== null && (model[old] === null || (model[old]?.is_complete ?? false) === false)
-      if(isCurrentIncomplete) {
-        return old
-      }
+  // useEffect(() => {
+  //   setValue(old => {
+  //     const isCurrentIncomplete = old !== null && (model[old] === null || (model[old]?.is_complete ?? false) === false)
+  //     if(isCurrentIncomplete) {
+  //       return old
+  //     }
 
-      const incomplete = Object.keys(model).find((key) => {
-        return model[key as keyof Model] === null || (model[key as keyof Model]?.is_complete ?? false) === false
-      })
+  //     const incomplete = Object.keys(model).find((key) => {
+  //       return model[key as keyof Model] === null || (model[key as keyof Model]?.is_complete ?? false) === false
+  //     })
 
-      if(incomplete === undefined) {
-        return null
-      }
+  //     if(incomplete === undefined) {
+  //       return null
+  //     }
 
-      return incomplete as keyof Model
-    })
-  }, [model])
+  //     return incomplete as keyof Model
+  //   })
+  // }, [model])
 
   return (
     <div className="p-6 h-full overflow-y-auto">
       <h2 className="text-2xl font-semibold text-gov-blue">Deklaracja PCC-3</h2>
 
-      <Accordion type="single" value={value ?? ''} onValueChange={(value) => {
-        setValue(value === '' ? null : value as keyof Model)
-      }} collapsible className="mt-4">
+      <Accordion
+        type="single"
+        value={value ?? ''}
+        onValueChange={(value) => {
+          setValue(value === '' ? null : (value as keyof Model))
+        }}
+        collapsible
+        className="mt-4"
+      >
         <AccordionItem value="sekcja_a">
-          <AccordionTrigger className="text-left font-bold">A. Okres, miejsce i cel składania deklaracji</AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">
+            A. Okres, miejsce i cel składania deklaracji
+          </AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInput
               label="Data dokonania czynności"
@@ -164,9 +171,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
                     Podmiot zobowiązany solidarnie do zapłaty podatku
                   </SelectItem>
                   <SelectItem value={PodmiotSkladajacy.STRONA_UMOWY_ZAMIANY}>Strona umowy zamiany</SelectItem>
-                  <SelectItem value={PodmiotSkladajacy.WSPOLNIK_SPOLKI_CYWILNEJ}>
-                    Wspólnik spółki cywilnej
-                  </SelectItem>
+                  <SelectItem value={PodmiotSkladajacy.WSPOLNIK_SPOLKI_CYWILNEJ}>Wspólnik spółki cywilnej</SelectItem>
                   <SelectItem value={PodmiotSkladajacy.POZYCZKOBIORCA}>
                     Podmiot, o którym mowa w art. 9 pkt 10 lit. b ustawy (pożyczkobiorca)
                   </SelectItem>
@@ -394,7 +399,9 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="sekcja_d">
-          <AccordionTrigger className="text-left font-bold">D. Obliczenie podatku od czynności cywilnoprawnych</AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">
+            D. Obliczenie podatku od czynności cywilnoprawnych
+          </AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Rodzaj czynności cywilnoprawnej">
               <Select value={rodzajCzynnosci} onValueChange={(value) => setRodzajCzynnosci(value)}>
