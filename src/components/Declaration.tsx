@@ -18,7 +18,7 @@ import {
 } from '@/types'
 import { motion } from 'framer-motion'
 import { set } from 'lodash'
-import { Dispatch, SetStateAction, useState } from 'react'
+import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
 type Props = {
   show: boolean
@@ -54,6 +54,19 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
   }
 
   const [rodzajPodatnika, setRodzajPodatnika] = useState<'fizyczna' | 'nie-fizyczna' | ''>('')
+  useEffect(() => {
+    if(model.sekcja_b?.osoba_fizyczna !== null) {
+      setRodzajPodatnika('fizyczna')
+      return 
+    }
+
+    if(model.sekcja_b?.osoba_niefizyczna !== null) {
+      setRodzajPodatnika('nie-fizyczna')
+      return 
+    }
+
+  }, [model.sekcja_b?.osoba_fizyczna,model.sekcja_b?.osoba_niefizyczna ])
+
   const [identyfikator, setIdentyfikator] = useState<'nip' | 'pesel' | ''>('')
   const [rodzajCzynnosci, setRodzajCzynnosci] = useState<string>('')
 
