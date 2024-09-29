@@ -10,7 +10,6 @@ import { useStoredState } from '@/hooks/useStoredState'
 import { Message, Model } from '@/types'
 import { useMutation } from '@tanstack/react-query'
 import { createFileRoute } from '@tanstack/react-router'
-import { da } from 'date-fns/locale'
 import merge from 'lodash.merge'
 import { FormEvent, KeyboardEvent, useCallback, useEffect, useRef, useState } from 'react'
 
