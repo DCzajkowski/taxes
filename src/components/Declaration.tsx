@@ -16,7 +16,7 @@ import {
   RodzajCzynnosci,
   TypSpolki,
 } from '@/types'
-import { m, motion } from 'framer-motion'
+import { motion } from 'framer-motion'
 import { set } from 'lodash'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 
@@ -153,7 +153,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Podmiot składający deklarację">
               <Select
-                value={String(model.sekcja_b?.podmiot_skladajacy ?? '')}
+                value={String(model.sekcja_b?.podmiot ?? '')}
                 onValueChange={(value) => setter('sekcja_b.podmiot_skladajacy')(Number(value))}
               >
                 <SelectTrigger className="w-full bg-white">
@@ -335,7 +335,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
         <AccordionItem value="sekcja_c">
           <AccordionTrigger className="text-left font-bold">C. Przedmiot opodatkowania</AccordionTrigger>
           <AccordionContent className="pb-6">
-            <DeclarationInputWrapper label="Podmiot składający deklarację">
+            <DeclarationInputWrapper label="Przedmiot opodatkowania">
               <Select
                 value={String(model.sekcja_c?.przedmiot_opodatkowania ?? '')}
                 onValueChange={(value) => setter('sekcja_c.przedmiot_opodatkowania')(Number(value))}
