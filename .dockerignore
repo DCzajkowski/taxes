@@ -1,3 +1,6 @@
+# Node modules
+node_modules
+
 # Logs
 logs
 *.log
@@ -7,18 +10,12 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
-# Dependencies
-node_modules
-
 # Build output
 dist
 dist-ssr
-*.local
 
 # Editor directories and files
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
+.vscode
 .idea
 .DS_Store
 *.suo
@@ -27,13 +24,20 @@ dist-ssr
 *.sln
 *.sw?
 
-# Generated output
-routeTree.gen.ts
-
 # Environment files
 .env
 .env.*
-!.env.example
+
+# Git related
+.git
+.gitignore
+
+# Docker related
+Dockerfile
+.dockerignore
+
+# Generated output
+routeTree.gen.ts
 
 # Test coverage
 coverage
@@ -42,6 +46,5 @@ coverage
 *.tmp
 *.temp
 
-# OS generated files
-.DS_Store
-Thumbs.db
+# !nginx.conf
+!nginx.conf
