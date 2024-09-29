@@ -154,7 +154,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
             <DeclarationInputWrapper label="Podmiot składający deklarację">
               <Select
                 value={String(model.sekcja_b?.podmiot ?? '')}
-                onValueChange={(value) => setter('sekcja_b.podmiot_skladajacy')(Number(value))}
+                onValueChange={(value) => setter('sekcja_b.podmiot')(Number(value))}
               >
                 <SelectTrigger className="w-full bg-white">
                   <SelectValue placeholder="" />
