@@ -29,7 +29,7 @@ type Props = {
 export function Declaration({ show, model, setModel }: Props) {
   return (
     <motion.div
-      className="overflow-hidden bg-gray-50 rounded-md"
+      className="overflow-hidden bg-white rounded-md"
       initial={false}
       variants={{
         show: { width: '32rem' },
@@ -95,11 +95,11 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
 
   return (
     <div className="p-6 h-full overflow-y-auto">
-      <h2 className="text-2xl font-semibold">Deklaracja PCC-3</h2>
+      <h2 className="text-2xl font-semibold text-gov-blue">Deklaracja PCC-3</h2>
 
       <Accordion type="single" defaultValue="sekcja_a" collapsible className="mt-4">
         <AccordionItem value="sekcja_a">
-          <AccordionTrigger className="text-left">A. Okres, miejsce i cel składania deklaracji</AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">A. Okres, miejsce i cel składania deklaracji</AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInput
               label="Data dokonania czynności"
@@ -125,7 +125,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="sekcja_b">
-          <AccordionTrigger className="text-left">B. Dane podatnika</AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">B. Dane podatnika</AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Podmiot składający deklarację">
               <Select
@@ -309,7 +309,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="sekcja_c">
-          <AccordionTrigger className="text-left">C. Przedmiot opodatkowania</AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">C. Przedmiot opodatkowania</AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Podmiot składający deklarację">
               <Select
@@ -370,7 +370,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="sekcja_d">
-          <AccordionTrigger className="text-left">D. Obliczenie podatku od czynności cywilnoprawnych</AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">D. Obliczenie podatku od czynności cywilnoprawnych</AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Rodzaj czynności cywilnoprawnej">
               <Select value={rodzajCzynnosci} onValueChange={(value) => setRodzajCzynnosci(value)}>
@@ -432,7 +432,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="sekcja_e">
-          <AccordionTrigger className="text-left">E. Obliczenie podatku od umowy spółki</AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">E. Obliczenie podatku od umowy spółki</AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Typ spółki">
               <Select
@@ -451,7 +451,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="sekcja_f">
-          <AccordionTrigger className="text-left">F. Podatek do zapłaty</AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">F. Podatek do zapłaty</AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInputWrapper label="Kwota podatku do zapłaty">
               <Input
@@ -464,7 +464,7 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
           </AccordionContent>
         </AccordionItem>
         <AccordionItem value="sekcja_g">
-          <AccordionTrigger className="text-left">G. Informacje dodatkowe </AccordionTrigger>
+          <AccordionTrigger className="text-left font-bold">G. Informacje dodatkowe </AccordionTrigger>
           <AccordionContent className="pb-6">
             <DeclarationInput
               label="Województwo"

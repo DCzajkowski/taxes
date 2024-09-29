@@ -33,7 +33,7 @@ export function OurChatInput({
   return (
     <form
       onSubmit={onSubmit}
-      className="relative rounded-lg border bg-background focus-within:ring-1 focus-within:ring-ring"
+      className="relative rounded-lg bg-background focus-within:ring-1 focus-within:ring-ring"
     >
       <ChatInput
         ref={inputRef}
@@ -43,7 +43,7 @@ export function OurChatInput({
         placeholder="Zadaj pytanie..."
         className="min-h-12 resize-none rounded-lg bg-background border-0 p-3 shadow-none focus-visible:ring-0"
       />
-      <div className="flex items-center p-3 pt-0">
+      <div className="flex items-center p-3 pt-0 text-gov-blue">
         <RecordButton
           onSuccess={(text) => {
             setInput((prev) => prev + text.trim())
@@ -58,7 +58,7 @@ export function OurChatInput({
           }}
         />
 
-        <Button disabled={disabled} type="submit" size="sm" className="ml-auto gap-1.5">
+        <Button disabled={disabled} type="submit" size="sm" className="ml-auto gap-1.5 bg-gov-blue text-white">
           Wyślij wiadomość
           <CornerDownLeft className="size-3.5" />
         </Button>

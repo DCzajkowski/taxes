@@ -16,7 +16,7 @@ export function DeclarationInput({ label, value, setValue }: Props) {
 
   return (
     <DeclarationInputWrapper label={label}>
-      <Input placeholder="" value={value} onChange={onChange} className="bg-white" />
+      <Input placeholder="" value={value} onChange={onChange} className="bg-white " />
     </DeclarationInputWrapper>
   )
 }
