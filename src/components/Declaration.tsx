@@ -119,8 +119,8 @@ function DeclarationContent({ model, setModel }: { model: Model; setModel: Dispa
     <div className="p-6 h-full overflow-y-auto">
       <h2 className="text-2xl font-semibold text-gov-blue">Deklaracja PCC-3</h2>
 
-      <Accordion type="single" value={value ?? undefined} onValueChange={(value) => {
-        setValue(value ==='' ? null : value as keyof Model)
+      <Accordion type="single" value={value ?? ''} onValueChange={(value) => {
+        setValue(value === '' ? null : value as keyof Model)
       }} collapsible className="mt-4">
         <AccordionItem value="sekcja_a">
           <AccordionTrigger className="text-left font-bold">A. Okres, miejsce i cel składania deklaracji</AccordionTrigger>

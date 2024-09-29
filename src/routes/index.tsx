@@ -23,7 +23,7 @@ function Index() {
     mutationFn: chat,
     onSuccess(data) {
       setMessages((messages) => [...messages, { role: 'assistant', content: data.text }])
-      setModel((model) => merge(model, data.model))
+      setModel((model) => ({...merge(model, data.model)}))
     },
   })
 
